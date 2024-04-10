@@ -1,0 +1,15 @@
+<!-- response.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+</head>
+<body>
+    <form id="paymentForm" action="{{ url }}" method="POST">
+        <input type="hidden" name="token_ws" value="{{ token }}">
+        <input type="submit" value="Pagar">
+    </form>
+</body>
+</html>

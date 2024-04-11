@@ -24,7 +24,8 @@ router.post('/create-transaction', async (req, res) => {
         buy_order = "ordenCompra12345678",
         session_id = "sesion1234557545",
         amount = req.body.amount,
-        return_url = "http://www.comercio.cl/webpay/retorno"
+        // return_url = "http://www.comercio.cl/webpay/retorno"
+        return_url = "http://127.0.0.1:3000/transbank-response"
       );
 
         // Extract token and URL from the transaction response
@@ -35,6 +36,7 @@ router.post('/create-transaction', async (req, res) => {
             <div style="text-align: center;">
                 <h2>¡Listo para pagar!</h2>
                 <p>Por favor, haz clic en el botón para proceder al pago.</p>
+                <p>Monto a pagar: <strong>$${amount}</strong></p>
                 <form action="${url}" method="POST">
                 <p>URL de Pago: <strong>${url}</strong></p>
                 <p>Token de Transacción: <strong>${token}</strong></p>
@@ -65,7 +67,23 @@ router.post('/create-transaction', async (req, res) => {
     }
   });
 
-  // Define the transaction response route
-  router.get('/transaction-response', (req, res) => {
-  // Your transaction response handling logic here
+// Define the transaction response route
+router.get('/transbank-response', async (req, res) => {
+  try {
+      // Aquí debes procesar la respuesta de Transbank
+      const token_ws = req.query.token_ws; // Obtén el token de la transacción desde los parámetros de la solicitud
+
+      // Realiza el commit de la transacción utilizando el SDK de Transbank
+      // Asegúrate de importar y crear una instancia adecuada del SDK de Transbank
+      const commitResponse = await ( new transbank.Transaction()).commit(token_ws);
+
+      // Aquí puedes realizar las acciones necesarias en tu sistema, como actualizar el estado del pedido, enviar confirmaciones por correo electrónico, etc.
+
+      // Envía una respuesta al servidor de Transbank para confirmar la recepción de la notificación
+      res.send('Transacción confirmada exitosamente');
+
+  } catch (error) {
+      console.error('Error al procesar respuesta de Transbank:', error);
+      res.status(500).json({ error: 'Error al procesar respuesta de Transbank' });
+  }
 });

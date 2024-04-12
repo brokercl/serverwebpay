@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .success-icon .fa-check-circle {
+    color: green;
+  }
+      
+  .success-message h1 {
+    color: #333;
+  }
+  
+  .transaction-details h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .transaction-details ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .transaction-details li {
+    margin-bottom: 10px;
+  }
+  

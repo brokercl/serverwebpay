@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transacción Exitosa</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Estilos para el fondo día */
+    body.day-mode {
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    /* Estilos para el fondo noche */
+    body.night-mode {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    /* Estilos para centrar el contenido */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+    }
+
+    /* Estilos para el icono */
+    .theme-toggle i {
+      font-size: 48px;
+    }
+
+    /* Estilos para el sol */
+    .fas.fa-sun {
+      color: #FDB813; /* Color amarillo para el sol */
+    }
+
+    /* Estilos para la luna */
+    .fas.fa-moon {
+      color: #B0C4DE; /* Color grisáceo para la luna */
+    }
+  </style>
+</head>
+<body class="day-mode">
+  <div class="container">
+    <div class="theme-toggle" onclick="toggleMode()">
+      <i class="fas fa-sun day"></i>
+      <div class="success-icon">
+        <i class="fas fa-check-circle fa-5x" style="color: green;"></i>
+      </div>
+      <div class="success-message">
+        <h1 style="text-align: center;">¡Transacción Exitosa!</h1>
+        <p style="text-align: center;">Se ha autorizado el pago correctamente.</p>
+      </div>
+      <div class="transaction-details" style="text-align: center;">
+        <h2>Detalles de la transacción:</h2>
+        <ul style="text-align: left;">
+          <li id="monto"><strong>Monto:</strong> $1738</li>
+          <li><strong>Número de orden de compra:</strong> O-37831</li>
+          <li><strong>Código de autorización:</strong> 1213</li>
+          <li><strong>Tipo de pago:</strong> Venta Débito</li>
+          <li><strong>Fecha de transacción:</strong> 11 de abril de 2024, 22:47:05</li>
+          <!-- Agregar más detalles de la transacción según sea necesario -->
+        </ul>
+      </div>
+      <div class="thank-you-message" style="text-align: center;">
+        <p>¡CarTag agradece su compra!</p>
+        <p>¡Existimos para protegerlo de cobros abusivos &#128545;</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('day-mode');
+      document.body.classList.toggle('night-mode');
+    }
+  </script>
+</body>
+</html>

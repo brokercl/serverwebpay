@@ -77,13 +77,17 @@ router.get('/transbank-response', async (req, res) => {
       // Asegúrate de importar y crear una instancia adecuada del SDK de Transbank
       const commitResponse = await ( new transbank.Transaction()).commit(token_ws);
 
-      // Aquí puedes realizar las acciones necesarias en tu sistema, como actualizar el estado del pedido, enviar confirmaciones por correo electrónico, etc.
-
-      // Envía una respuesta al servidor de Transbank para confirmar la recepción de la notificación
-      res.send('Transacción confirmada exitosamente');
-
+    // Verificar que response_code sea igual a cero
+    if (commitResponse.response_code === 0) {
+       // Renderizar la plantilla HTML con la respuesta de Transbank
+       res.sendFile(__dirname + '/public/response.html');
+      } else {
+      // Si response_code no es cero, enviar un mensaje de error al cliente
+      res.status(400).json({ error: 'Error al confirmar la transacción' });
+    }
   } catch (error) {
-      console.error('Error al procesar respuesta de Transbank:', error);
-      res.status(500).json({ error: 'Error al procesar respuesta de Transbank' });
+    // Manejar cualquier error que ocurra durante el proceso de confirmación
+    console.error('Error al confirmar la transacción:', error);
+    res.status(500).json({ error: 'Error al confirmar la transacción' });
   }
 });

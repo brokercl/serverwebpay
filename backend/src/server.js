@@ -1,5 +1,8 @@
 const express = require('express');
+const ejs = require('ejs');
 const server = express();
+// Set EJS as the view engine
+server.set('view engine', 'ejs');
 
 const morgan = require ('morgan');
 server.use(morgan('dev'));

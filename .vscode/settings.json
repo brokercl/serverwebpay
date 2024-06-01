@@ -1,0 +1,11 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/5176b926-7e0a-4cc2-9fea-ecf0687a46c8/resourceGroups/ge_group/providers/Microsoft.Web/sites/geocarpay",
+    "appService.deploySubpath": ".",
+    "azureFunctions.deploySubpath": ".",
+    "azureFunctions.postDeployTask": "npm install (functions)",
+    "azureFunctions.projectLanguage": "JavaScript",
+    "azureFunctions.projectRuntime": "~4",
+    "debug.internalConsoleOptions": "neverOpen",
+    "azureFunctions.projectLanguageModel": 4,
+    "azureFunctions.preDeployTask": "npm prune (functions)"
+}
